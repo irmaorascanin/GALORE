@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ARTIST
+  ADMIN
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(USER)
+  artist    Artist?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Artist {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+  bio       String?
+  website   String?
+  artworks  Artwork[]
+}
+
+model Artwork {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  imageUrl    String
+  price       Float
+  available   Boolean  @default(true)
+  artist      Artist   @relation(fields: [artistId], references: [id])
+  artistId    String
+  createdAt   DateTime @default(now())
+}

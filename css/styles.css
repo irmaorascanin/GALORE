@@ -1,0 +1,249 @@
+body {
+    font-family: 'Cinzel';
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: white;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #d4af37;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    margin: 0 15px;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d4af37;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+.active {
+    color: #d4af37;
+    border-bottom: 2px solid #d4af37;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('../assets/images/icon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.hero .btn {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 12px 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.hero .btn:hover {
+    background: white;
+    color: black;
+}
+
+/* Product Cards Section */
+.products {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+}
+
+.shop-card {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.shop-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.zoom img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Product Card Internal */
+.product-card {
+    background: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-card .card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* Modal Buttons */
+.btn-primary {
+    background-color: #d4af37;
+    border-color: #d4af37;
+    color: white;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #b8962f;
+    border-color: #b8962f;
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #b8962f !important;
+    border-color: #b8962f !important;
+    box-shadow: 0 0 5px #d4af37 !important;
+    outline: none !important;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+    border-color: #3d4348;
+}
+
+/* Footer */
+footer {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+}
+
+/* About section */
+.about-container {
+    border-left: 4px solid #d4af37;
+    padding-left: 20px;
+    max-width: 800px;
+    margin: auto;
+    text-align: left;
+}
+
+.art-quote {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #d4af37;
+    border-left: 4px solid #d4af37;
+    padding-left: 15px;
+    margin-top: 20px;
+    max-width: 600px;
+}
+
+.art-quote span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Contact Section */
+#contact {
+    background-color: black;
+    padding: 40px 0;
+    color: white;
+}
+
+/* Light Button */
+.btn-light {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-light:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Smooth transition for content */
+#content {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}

@@ -110,7 +110,7 @@
         alert("Registration successful!");
         console.log(data);
       } else {
-        alert(data.message || "Registration failed");
+        alert(data.error || data.message || "Registration failed");
       }
 
     } catch (error) {

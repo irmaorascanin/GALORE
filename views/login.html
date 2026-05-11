@@ -95,7 +95,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
       alert("Login successful!");
       console.log(data);
     } else {
-      alert(data.message || "Login failed");
+      alert(data.error || data.message || "Login failed");
     }
 
   } catch (error) {

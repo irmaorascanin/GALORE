@@ -7,13 +7,16 @@ import artworkRoutes from './routes/artwork.routes';
 dotenv.config();
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/artworks', artworkRoutes);
 
+app.get('/', (req, res) => {
+  res.send('GALORE backend is running');
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

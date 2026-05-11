@@ -47,6 +47,7 @@
   </style>
 </head>
 
+
 <body class="d-flex justify-content-center align-items-center vh-100">
 
   <div class="form-container text-center">
@@ -67,5 +68,41 @@
     </div>
   </div>
 
+<script>
+const API_URL = "https://galore.onrender.com";
+
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Login successful!");
+      console.log(data);
+    } else {
+      alert(data.message || "Login failed");
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+});
+</script>
 </body>
 </html>

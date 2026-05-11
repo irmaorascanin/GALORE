@@ -93,16 +93,98 @@
       cursor: pointer;
       border-radius: 6px;
     }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-box {
+      background: #fff;
+      color: #222;
+      width: 520px;
+      max-width: 90%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0,0,0,.5);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .close-x {
+      font-size: 34px;
+      cursor: pointer;
+      color: #777;
+    }
+
+    .modal-body {
+      text-align: center;
+      padding: 25px;
+    }
+
+    .modal-body img {
+      width: 100%;
+      max-height: 330px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .modal-price {
+      margin-top: 18px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 16px 22px;
+      border-top: 1px solid #ddd;
+    }
+
+    .modal-footer button {
+      width: auto;
+      padding: 12px 20px;
+      margin-top: 0;
+    }
+
+    .close-btn {
+      background: #6c757d;
+      color: #fff;
+    }
+
+    .purchase-btn {
+      background: #d4af37;
+      color: #fff;
+    }
   </style>
 </head>
+
 <body>
 
 <nav>
-  <a href="index.html" class="logo">GALORÉ</a>
+  <a href="../index.html" class="logo">GALORÉ</a>
   <div>
-    <a href="index.html">HOME</a>
+    <a href="../index.html">HOME</a>
     <a href="gallery.html">GALLERY</a>
-    <a href="upload-artwork.html">UPLOAD</a>
+    <a href="upload_artwork.html">UPLOAD</a>
     <a href="profile.html">PROFILE</a>
   </div>
 </nav>
@@ -114,15 +196,51 @@
 
 <div class="grid" id="gallery"></div>
 
-<script>
-const API_URL = "https://galore.onrender.com";
-let artworks = [];
+<div class="modal-overlay" id="artworkModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 id="modalTitle"></h2>
+      <span class="close-x" onclick="closeModal()">&times;</span>
+    </div>
 
-async function loadArtworks() {
-  const response = await fetch(`${API_URL}/api/artworks`);
-  artworks = await response.json();
-  displayArtworks(artworks);
-}
+    <div class="modal-body">
+      <img id="modalImage" src="" alt="Artwork" />
+      <div class="modal-price" id="modalPrice"></div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="close-btn" onclick="closeModal()">Close</button>
+      <button class="purchase-btn" onclick="purchaseArtwork()">Purchase</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let artworks = [
+  {
+    id: 1,
+    title: "Golden Echoes",
+    description: "A luxurious artwork inspired by golden tones and timeless elegance.",
+    price: 250,
+    imageUrl: "../assets/images/golden.jpg"
+  },
+  {
+    id: 2,
+    title: "Eternity",
+    description: "A deep visual expression of emotion, memory, and artistic silence.",
+    price: 320,
+    imageUrl: "../assets/images/eternity.jpg"
+  },
+  {
+    id: 3,
+    title: "Nordic Silence",
+    description: "A calm and minimal piece inspired by northern landscapes.",
+    price: 180,
+    imageUrl: "../assets/images/nordicsilence.webp"
+  }
+];
+
+let selectedArtwork = null;
 
 function displayArtworks(items) {
   const gallery = document.getElementById("gallery");
@@ -139,28 +257,48 @@ function displayArtworks(items) {
         <img src="${art.imageUrl}" alt="${art.title}">
         <div class="card-body">
           <h3>${art.title}</h3>
-          <p>${art.description || ""}</p>
-          <p class="price">$${art.price}</p>
-          <button onclick="buyArtwork('${art.id}')">Buy Artwork</button>
+          <p>${art.description}</p>
+          <p class="price">${art.price}.00 €</p>
+          <button onclick="openModal(${art.id})">View Details</button>
         </div>
       </div>
     `;
   });
 }
 
+function openModal(id) {
+  selectedArtwork = artworks.find(art => art.id === id);
+
+  document.getElementById("modalTitle").innerText = selectedArtwork.title;
+  document.getElementById("modalImage").src = selectedArtwork.imageUrl;
+  document.getElementById("modalPrice").innerText = selectedArtwork.price + ".00 €";
+
+  document.getElementById("artworkModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("artworkModal").style.display = "none";
+}
+
+function purchaseArtwork() {
+  if (!selectedArtwork) return;
+
+  alert("Purchase successful! You purchased: " + selectedArtwork.title);
+  closeModal();
+}
+
 document.getElementById("search").addEventListener("input", (e) => {
   const value = e.target.value.toLowerCase();
+
   const filtered = artworks.filter(art =>
-    art.title.toLowerCase().includes(value)
+    art.title.toLowerCase().includes(value) ||
+    art.description.toLowerCase().includes(value)
   );
+
   displayArtworks(filtered);
 });
 
-function buyArtwork(id) {
-  alert("Artwork purchased successfully!");
-}
-
-loadArtworks();
+displayArtworks(artworks);
 </script>
 
 </body>

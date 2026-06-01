@@ -141,8 +141,8 @@
 
     <div class="summary">
       <h3>Order Summary</h3>
-      <p><strong>Artwork:</strong> Golden Echoes</p>
-      <p><strong>Price:</strong> 250.00 €</p>
+      <p><strong>Artwork:</strong> <span id="artwork-name"></span></p>
+      <p><strong>Price:</strong> <span id="artwork-price"></span></p>
       <p><strong>Shipping:</strong> Free</p>
       <hr>
       <h4>Total: 250.00 €</h4>
@@ -173,6 +173,18 @@
       🔒 Secure SSL encrypted payment powered by GALORÉ
     </p>
 
+    <script>
+    const artwork = JSON.parse(
+    localStorage.getItem("selectedArtwork")
+    );
+
+    if (artwork) {
+    document.getElementById("artwork-name").textContent = artwork.title;
+
+    document.getElementById("artwork-price").textContent = artwork.price;
+    }
+  </script>
+
   </div>
 
 </section>
@@ -182,6 +194,8 @@ document.getElementById("payment-form").addEventListener("submit", function(e) {
   e.preventDefault();
 
   alert("Payment successful! Thank you for your purchase.");
+
+  localStorage.removeItem("selectedArtwork");
 
   window.location.href = "index.html";
 });

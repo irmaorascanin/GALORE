@@ -125,17 +125,42 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  function openModal(title, image, price) {
-    document.getElementById('productTitle').textContent = title;
-    document.getElementById('productImage').src = image;
-    document.getElementById('productPrice').textContent = price;
-    var myModal = new bootstrap.Modal(document.getElementById('productModal'));
-    myModal.show();
+
+let selectedArtwork = null;
+
+function openModal(title, image, price) {
+
+  selectedArtwork = {
+    title,
+    image,
+    price
+  };
+
+  document.getElementById('productTitle').textContent = title;
+  document.getElementById('productImage').src = image;
+  document.getElementById('productPrice').textContent = price;
+
+  var myModal = new bootstrap.Modal(
+    document.getElementById('productModal')
+  );
+
+  myModal.show();
+}
+
+function purchaseArtwork() {
+
+  if (!selectedArtwork) {
+    alert("Please select an artwork.");
+    return;
   }
 
-  function purchaseArtwork() {
+  localStorage.setItem(
+    "selectedArtwork",
+    JSON.stringify(selectedArtwork)
+  );
+
   window.location.href = "checkout.html";
-  }
+}
 
 </script>
 </body>

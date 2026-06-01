@@ -145,7 +145,7 @@
       <p><strong>Price:</strong> <span id="artwork-price"></span></p>
       <p><strong>Shipping:</strong> Free</p>
       <hr>
-      <h4>Total: 250.00 €</h4>
+      <h4>Total: <span id="artwork-total"></span></h4>
     </div>
 
     <form id="payment-form">
@@ -179,11 +179,15 @@
     );
 
     if (artwork) {
-    document.getElementById("artwork-name").textContent = artwork.title;
+      document.getElementById("artwork-name").textContent = artwork.title;
 
-    document.getElementById("artwork-price").textContent = artwork.price;
+      document.getElementById("artwork-price").textContent =
+      artwork.price + " €";
+
+      document.getElementById("artwork-total").textContent =
+      artwork.price + " €";
     }
-  </script>
+    </script>
 
   </div>
 

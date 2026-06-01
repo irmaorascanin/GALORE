@@ -242,7 +242,15 @@ footer {
     color: black;
 }
 
-/* Smooth transition for content */
+#orders-container {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#orders-container div {
+  border-left: 4px solid #d4af37;
+}
+
 #content {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;

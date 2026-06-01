@@ -181,8 +181,10 @@
     if (artwork) {
       document.getElementById("artwork-name").textContent = artwork.title;
 
-      document.getElementById("artwork-price").textContent = artwork.price;
-      document.getElementById("artwork-total").textContent = artwork.price;
+      const cleanPrice = artwork.price.replaceAll("€", "").trim() + " €";
+
+    document.getElementById("artwork-price").textContent = cleanPrice;
+    document.getElementById("artwork-total").textContent = cleanPrice;
     }
     </script>
 

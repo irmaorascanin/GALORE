@@ -1,9 +1,9 @@
 ### 1. Register new user
-POST http://localhost:3001/api/auth/register
+POST https://galore.onrender.com/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "testuser@example.com",
+  "email": "test_irma@example.com",
   "password": "test123",
   "name": "Test User"
 }
@@ -11,7 +11,7 @@ Content-Type: application/json
 ###
 
 ### 2. Login user
-POST http://localhost:3001/api/auth/login
+POST https://galore.onrender.com/api/auth/login
 Content-Type: application/json
 
 {
@@ -21,9 +21,9 @@ Content-Type: application/json
 
 ###
 
-### 3. Create artist profile (paste token below)
-POST http://localhost:3001/api/artworks/artist
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNmNDM3ODUyLTc5ZTItNGRmMi1hZTFkLTAwZjMyYjFiOTJmNSIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0NzE3MTk0OCwiZXhwIjoxNzQ3MTc1NTQ4fQ.u7GzaH5MkyAn4g9beMrFSf7GZZtn5Mo4MK_-9QoZ060
+### 3. Create artist profile 
+POST https://galore.onrender.com/api/artworks/artist
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZkMDdhY2MyLTFhMGMtNDUzYy05ZTkxLTYzMjJlZjUzZDM3MyIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc4MDg0Nzc2NSwiZXhwIjoxNzgwODUxMzY1fQ.2AYYxcQDd_YeTjrKFjcVGlu-YyBLhZHDl8h5s-D23QM
 Content-Type: application/json
 
 {
@@ -34,8 +34,8 @@ Content-Type: application/json
 ###
 
 ### 4. Add artwork
-POST http://localhost:3001/api/artworks
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNmNDM3ODUyLTc5ZTItNGRmMi1hZTFkLTAwZjMyYjFiOTJmNSIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0NzE3MTk0OCwiZXhwIjoxNzQ3MTc1NTQ4fQ.u7GzaH5MkyAn4g9beMrFSf7GZZtn5Mo4MK_-9QoZ060
+POST https://galore.onrender.com/api/artworks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZkMDdhY2MyLTFhMGMtNDUzYy05ZTkxLTYzMjJlZjUzZDM3MyIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc4MDg0Nzc2NSwiZXhwIjoxNzgwODUxMzY1fQ.2AYYxcQDd_YeTjrKFjcVGlu-YyBLhZHDl8h5s-D23QM
 Content-Type: application/json
 
 {
@@ -48,18 +48,18 @@ Content-Type: application/json
 ###
 
 ### 5. Get all artworks
-GET http://localhost:3001/api/artworks
+GET https://galore.onrender.com/api/artworks
 
 ###
 
 ### 6. Get single artwork
-GET http://localhost:3001/api/artworks/PASTE_ARTWORK_ID_HERE
+GET https://galore.onrender.com/api/artworks/c92b0710-ae84-48da-b582-98536d7596a8
 
 ###
 
 ### 7. Update artwork
-PUT http://localhost:3001/api/artworks/PASTE_ARTWORK_ID_HERE
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNmNDM3ODUyLTc5ZTItNGRmMi1hZTFkLTAwZjMyYjFiOTJmNSIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0NzE3MTk0OCwiZXhwIjoxNzQ3MTc1NTQ4fQ.u7GzaH5MkyAn4g9beMrFSf7GZZtn5Mo4MK_-9QoZ060
+PUT https://galore.onrender.com/api/artworks/c92b0710-ae84-48da-b582-98536d7596a8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZkMDdhY2MyLTFhMGMtNDUzYy05ZTkxLTYzMjJlZjUzZDM3MyIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc4MDg0Nzc2NSwiZXhwIjoxNzgwODUxMzY1fQ.2AYYxcQDd_YeTjrKFjcVGlu-YyBLhZHDl8h5s-D23QM
 Content-Type: application/json
 
 {
@@ -69,5 +69,5 @@ Content-Type: application/json
 ###
 
 ### 8. Delete artwork
-DELETE http://localhost:3001/api/artworks/PASTE_ARTWORK_ID_HERE
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNmNDM3ODUyLTc5ZTItNGRmMi1hZTFkLTAwZjMyYjFiOTJmNSIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0NzE3MTk0OCwiZXhwIjoxNzQ3MTc1NTQ4fQ.u7GzaH5MkyAn4g9beMrFSf7GZZtn5Mo4MK_-9QoZ060
+DELETE https://galore.onrender.com/api/artworks/c92b0710-ae84-48da-b582-98536d7596a8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZkMDdhY2MyLTFhMGMtNDUzYy05ZTkxLTYzMjJlZjUzZDM3MyIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc4MDg0Nzc2NSwiZXhwIjoxNzgwODUxMzY1fQ.2AYYxcQDd_YeTjrKFjcVGlu-YyBLhZHDl8h5s-D23QM

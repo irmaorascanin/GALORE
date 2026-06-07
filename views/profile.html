@@ -165,9 +165,9 @@
     </div>
 
     <div class="actions">
-      <a href="artist_dashboard.html" class="btn-gold">Artist Dashboard</a>
-      <a href="admin.html" class="btn-dark-custom">Admin Panel</a>
-      <a href="upload_artwork.html" class="btn-dark-custom">Upload Artwork</a>
+      <a href="artist_dashboard.html" class="btn-gold" id="artist-btn">Artist Dashboard</a>
+      <a href="admin.html" class="btn-dark-custom" id="admin-btn">Admin Panel</a>
+      <a href="upload_artwork.html" class="btn-dark-custom" id="upload-btn">Upload Artwork</a>
       <button class="btn-gold" onclick="logout()">Logout</button>
     </div>
 
@@ -184,6 +184,15 @@
   document.getElementById("user-name").innerText = user.name || "User";
   document.getElementById("user-email").innerText = user.email || "";
   document.getElementById("user-role").innerText = "Role: " + (user.role || "USER");
+
+  if (user.role !== "ADMIN") {
+  document.getElementById("admin-btn").style.display = "none";
+  }
+
+  if (user.role !== "ARTIST" && user.role !== "ADMIN") {
+  document.getElementById("artist-btn").style.display = "none";
+  document.getElementById("upload-btn").style.display = "none";
+  }
 
   function logout() {
     localStorage.removeItem("token");
